@@ -1,7 +1,10 @@
-const express = require("express");
-const router = express.Router();
+import express from 'express';
+import { testEnvironmentVariable } from '../settings';
 
-router.get("/", function (req, res, next) {
-  return res.status(200).json({ message: "Sanity Check" });
+const indexRouter = express.Router();
+
+indexRouter.get('/', (req, res) => {
+  res.status(200).json({ message: testEnvironmentVariable });
 });
-module.exports = router;
+
+export default indexRouter;
